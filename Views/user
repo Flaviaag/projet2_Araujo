@@ -1,0 +1,18 @@
+<?php
+
+if (isset($_POST['register'])) {
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $date_naissance = $_POST['date_naissance'];
+    $mot_de_passe = $_POST['mot_de_passe'];
+    $c_mot_de_passe = $_POST['c-mot_de_passe'];
+    if (!empty($nom) && !empty($prenom) && !empty($email) && !empty($date_naissance) && !empty($mot_de_passe) && !empty($c_mot_de_passe)) {
+        if ($mot_de_passe === $c_mot_de_passe) {
+            register($nom, $prenom, $email, $date_naissance, $mot_de_passe);
+
+        }
+    }
+}
+
+?>

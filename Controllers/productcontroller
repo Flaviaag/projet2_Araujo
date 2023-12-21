@@ -1,0 +1,34 @@
+<?php
+class Product extends Controller{
+
+    public function index(){
+    
+        $this->loadModel('Product');
+        $products = $this->product->getAll();
+        $this->render('index', compact('products'));
+    }
+
+    $view = new ProductView();
+    $view->render(['products' => $products]);
+    
+}
+
+public function lire(string $slug){
+    $this->loadModel('Product');
+    $product = $this->Product->findBySlug($slug);
+    $this->render('lire', compact('product'));
+   }
+
+public function modifier($id){
+    $this->loadModel("Product");
+    $this->Product->=$id;
+    $product=$this->Product->getOne();
+    $this->render('modifier', compact('product'));
+}
+
+public function loadModel($model){
+    requiere_once ROOT. 'models/'$model.'.php';
+    $this->model=new $model();
+}
+
+
